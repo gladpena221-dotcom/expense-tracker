@@ -1,0 +1,351 @@
+:root {
+  --bg: #efe6d6;
+  --bg-deep: #e5d8c4;
+  --ink: #1c1712;
+  --muted: #655c52;
+  --paper: #fbf7f0;
+  --line: #d8ccb8;
+  --green: #1d4738;
+  --green-soft: #e5f0ea;
+  --danger: #8d311c;
+  --danger-soft: #f8e6e0;
+  --food: #a8641e;
+  --transport: #24566c;
+  --shopping: #84384a;
+  --other: #5c564e;
+  --shadow: 0 18px 40px rgba(58, 40, 18, 0.08);
+  --radius: 18px;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 250, 240, 0.9), transparent 36%),
+    linear-gradient(180deg, #f6f0e4 0%, var(--bg) 28%, #e9decc 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(80, 58, 30, 0.035) 1px, transparent 1px);
+  background-size: 100% 28px;
+}
+
+h1, h2, .brand-name, .total {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 560;
+  letter-spacing: -0.03em;
+}
+
+a { color: inherit; }
+
+.site-header, .page, .site-footer {
+  position: relative;
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--green);
+  color: #f6f1e6;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.brand-name, .brand-sub { display: block; }
+.brand-name { font-size: 22px; line-height: 1; }
+.brand-sub { margin-top: 4px; color: var(--muted); font-size: 13px; }
+
+.site-nav { display: flex; gap: 8px; }
+
+.nav-link {
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.nav-link.is-active {
+  background: var(--ink);
+  color: #f7f2ea;
+}
+
+.page { padding: 18px 0 36px; }
+.page-narrow { width: min(680px, calc(100% - 32px)); }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) 1.2fr;
+  gap: 22px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1 { margin: 0; font-size: clamp(36px, 5vw, 58px); line-height: 0.95; }
+h2 { margin: 0; font-size: 28px; }
+
+.total {
+  margin: 10px 0 0;
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1;
+}
+
+.lede, .panel-note, .field-hint, .site-footer p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.category-sums {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0;
+}
+
+.sum-card {
+  margin: 0;
+  padding: 14px 16px 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.sum-card dt { color: var(--muted); font-size: 13px; font-weight: 700; }
+.sum-card dd { margin: 6px 0 0; font-size: 22px; font-weight: 700; }
+.sum-card[data-category="Їжа"] { border-top: 4px solid var(--food); }
+.sum-card[data-category="Транспорт"] { border-top: 4px solid var(--transport); }
+.sum-card[data-category="Покупки"] { border-top: 4px solid var(--shopping); }
+.sum-card[data-category="Інше"] { border-top: 4px solid var(--other); }
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.panel {
+  background: rgba(251, 247, 240, 0.92);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.panel-note { margin: 8px 0 0; font-size: 14px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; }
+.field-hint { margin: 0; font-size: 13px; }
+
+label { font-size: 14px; font-weight: 700; }
+
+input, select {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fffdf9;
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 12px 13px;
+  font: inherit;
+}
+
+input:focus, select:focus, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.field-error {
+  margin: 0;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.field.is-invalid input,
+.field.is-invalid select,
+.field.is-invalid .check {
+  border-color: var(--danger);
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { width: 100%; margin-top: 18px; background: var(--green); color: #f6f1e6; }
+.btn-primary:hover { background: #16392d; }
+.btn-danger { background: var(--danger-soft); color: var(--danger); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+
+.ledger-head, .modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.toolbar { margin-top: 16px; }
+.field-search { margin-top: 0; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+.chip {
+  border: 1px solid var(--line);
+  background: #fffdf9;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.chip.is-active { background: var(--green-soft); border-color: var(--green); color: var(--green); }
+
+.expense-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
+
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 14px 14px 16px;
+  background:
+    radial-gradient(circle at left, transparent 7px, #fffdf9 7.5px) left / 18px 18px repeat-y,
+    #fffdf9;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+}
+
+.expense-title { margin: 0; font-weight: 750; }
+.expense-meta { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+.expense-side { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.expense-amount { font-weight: 800; white-space: nowrap; }
+.tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 750;
+  background: var(--bg-deep);
+}
+.tag-Їжа { color: var(--food); }
+.tag-Транспорт { color: var(--transport); }
+.tag-Покупки { color: var(--shopping); }
+.tag-Інше { color: var(--other); }
+
+.btn-delete {
+  border: 0;
+  background: transparent;
+  color: var(--danger);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  padding: 0;
+}
+
+.empty { margin: 18px 0 0; color: var(--muted); }
+.empty[hidden], .field-error[hidden], .success[hidden] { display: none; }
+
+.register-panel h1 { font-size: 46px; margin-bottom: 8px; }
+
+.success {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-weight: 800;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffdf9;
+}
+
+.check input { width: auto; }
+
+.modal {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px;
+  width: min(440px, calc(100% - 32px));
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.modal::backdrop { background: rgba(28, 23, 18, 0.45); }
+.modal p { color: var(--muted); }
+.modal-actions { margin-top: 18px; justify-content: flex-end; }
+
+.site-footer { padding-bottom: 28px; font-size: 13px; }
+
+@media (max-width: 860px) {
+  .hero, .workspace, .ledger-head { grid-template-columns: 1fr; display: grid; }
+  .ledger-head { display: flex; flex-direction: column; }
+  .category-sums { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .site-header { align-items: flex-start; flex-direction: column; }
+  .category-sums { grid-template-columns: 1fr; }
+  .expense-card { flex-direction: column; }
+  .expense-side { align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto; }
+}

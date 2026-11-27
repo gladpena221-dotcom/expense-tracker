@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Щоденник витрат</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,680&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">грн</span>
+      <span>
+        <span class="brand-name">Щоденник</span>
+        <span class="brand-sub">особисті витрати</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Розділи">
+      <a class="nav-link is-active" href="index.html" aria-current="page">Витрати</a>
+      <a class="nav-link" href="register.html">Реєстрація</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero" aria-labelledby="total-heading">
+      <div>
+        <p class="eyebrow">Усі збережені витрати</p>
+        <h1 id="total-heading">Загальна сума</h1>
+        <p class="total" id="grand-total">0,00 грн</p>
+        <p class="lede" id="expense-count">Поки що записів немає.</p>
+      </div>
+      <dl class="category-sums" id="category-sums">
+        <div class="sum-card" data-category="Їжа">
+          <dt>Їжа</dt>
+          <dd>0,00 грн</dd>
+        </div>
+        <div class="sum-card" data-category="Транспорт">
+          <dt>Транспорт</dt>
+          <dd>0,00 грн</dd>
+        </div>
+        <div class="sum-card" data-category="Покупки">
+          <dt>Покупки</dt>
+          <dd>0,00 грн</dd>
+        </div>
+        <div class="sum-card" data-category="Інше">
+          <dt>Інше</dt>
+          <dd>0,00 грн</dd>
+        </div>
+      </dl>
+    </section>
+
+    <div class="workspace">
+      <section class="panel" aria-labelledby="form-heading">
+        <h2 id="form-heading">Нова витрата</h2>
+        <p class="panel-note">Назва не може бути порожньою, сума має бути більшою за нуль.</p>
+        <form id="expense-form" novalidate>
+          <div class="field">
+            <label for="expense-title">Назва витрати</label>
+            <input id="expense-title" name="title" type="text" maxlength="80" autocomplete="off" placeholder="Наприклад, кава">
+            <p class="field-error" id="title-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="expense-amount">Сума, грн</label>
+            <input id="expense-amount" name="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0,00">
+            <p class="field-error" id="amount-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="expense-category">Категорія</label>
+            <select id="expense-category" name="category">
+              <option>Їжа</option>
+              <option>Транспорт</option>
+              <option>Покупки</option>
+              <option>Інше</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">Додати витрату</button>
+        </form>
+      </section>
+
+      <section class="panel ledger" aria-labelledby="list-heading">
+        <div class="ledger-head">
+          <div>
+            <h2 id="list-heading">Список витрат</h2>
+            <p class="panel-note" id="visible-summary">Показано 0 записів.</p>
+          </div>
+          <button class="btn btn-danger" type="button" id="clear-all" disabled>Очистити всі витрати</button>
+        </div>
+
+        <div class="toolbar">
+          <div class="field field-search">
+            <label for="expense-search">Пошук за назвою</label>
+            <input id="expense-search" type="search" placeholder="Почніть вводити назву" autocomplete="off">
+          </div>
+          <div class="filters" role="group" aria-label="Фільтр за категорією">
+            <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Усі</button>
+            <button class="chip" type="button" data-filter="Їжа" aria-pressed="false">Їжа</button>
+            <button class="chip" type="button" data-filter="Транспорт" aria-pressed="false">Транспорт</button>
+            <button class="chip" type="button" data-filter="Покупки" aria-pressed="false">Покупки</button>
+            <button class="chip" type="button" data-filter="Інше" aria-pressed="false">Інше</button>
+          </div>
+        </div>
+
+        <ul class="expense-list" id="expense-list"></ul>
+        <p class="empty" id="empty-state">Додайте першу витрату — вона залишиться після перезавантаження.</p>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="modal" id="clear-dialog" aria-labelledby="clear-title">
+    <h2 id="clear-title">Видалити всі витрати?</h2>
+    <p>Записи зникнуть із цієї сторінки і з LocalStorage. Скасувати це буде неможливо.</p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" type="button" id="clear-cancel">Скасувати</button>
+      <button class="btn btn-danger" type="button" id="clear-confirm">Видалити все</button>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <p>Навчальний трекер. Дані лишаються лише у вашому браузері.</p>
+  </footer>
+
+  <script src="js/expenses.js"></script>
+</body>
+</html>

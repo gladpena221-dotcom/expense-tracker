@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Реєстрація — Щоденник витрат</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,680&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">грн</span>
+      <span>
+        <span class="brand-name">Щоденник</span>
+        <span class="brand-sub">особисті витрати</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Розділи">
+      <a class="nav-link" href="index.html">Витрати</a>
+      <a class="nav-link is-active" href="register.html" aria-current="page">Реєстрація</a>
+    </nav>
+  </header>
+
+  <main class="page page-narrow">
+    <section class="panel register-panel" aria-labelledby="register-heading">
+      <p class="eyebrow">Навчальна форма</p>
+      <h1 id="register-heading">Реєстрація</h1>
+      <p class="panel-note">Обліковий запис не створюється. Пароль ніде не зберігається, зокрема не потрапляє в LocalStorage. Перевірка відбувається на сторінці, без перезавантаження.</p>
+
+      <p class="success" id="register-success" hidden>Реєстрація успішна!</p>
+
+      <form id="register-form" novalidate>
+        <div class="field">
+          <label for="username">Ім'я користувача</label>
+          <input id="username" name="username" type="text" autocomplete="username" minlength="3">
+          <p class="field-hint">Мінімум 3 символи.</p>
+          <p class="field-error" id="username-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com">
+          <p class="field-error" id="email-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="password">Пароль</label>
+          <input id="password" name="password" type="password" autocomplete="new-password">
+          <p class="field-hint">Мінімум 8 символів.</p>
+          <p class="field-error" id="password-error" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="confirm">Підтвердження пароля</label>
+          <input id="confirm" name="confirm" type="password" autocomplete="new-password">
+          <p class="field-error" id="confirm-error" hidden></p>
+        </div>
+
+        <div class="field field-check">
+          <label class="check" for="terms">
+            <input id="terms" name="terms" type="checkbox">
+            <span>Погоджуюсь з умовами</span>
+          </label>
+          <p class="field-error" id="terms-error" hidden></p>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Зареєструватися</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Навчальна перевірка форми. Дані реєстрації не записуються.</p>
+  </footer>
+
+  <script src="js/register.js"></script>
+</body>
+</html>
